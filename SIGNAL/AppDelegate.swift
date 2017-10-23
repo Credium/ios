@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        IQKeyboardManager.sharedManager().enable = true
+        
         return true
     }
 
@@ -44,3 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension UIViewController {
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+}
